@@ -8,6 +8,7 @@ tags = db.Table('tags',
 
 class Page(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.Text, unique=True) # ADD: lowercase/slug checking
     content = db.Column(db.Text)
     tags = db.relationship('Tag', secondary=tags,
         backref=db.backref('pages', lazy='dynamic'))
@@ -15,5 +16,5 @@ class Page(db.Model):
 
 class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Text)
+    name = db.Column(db.Text, unique=True)
 

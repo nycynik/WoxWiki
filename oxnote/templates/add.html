@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block body %}
+<h1> Add a new page </h1>
+<form method="post">
+    <input name="title" type="text"><br>
+    <div id="tag-list">
+    <input name="tags[]" ><br>
+    <input name="tags[]" ><br>
+    </div>
+    <textarea name="content"></textarea><br>
+    <input type="submit">
+</form>
+<script>
+    var tagDiv = document.getElementById('tag-list');
+    var onTagAdd = function() {
+        tagDiv.innerHTML += '<input name="tags[]">
+    }
+</script>
+{% endblock %}
