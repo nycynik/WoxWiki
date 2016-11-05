@@ -1,0 +1,23 @@
+#body-container {
+    overflow: hidden;
+}
+
+#main {
+    float:left;
+    width: 70%;
+}
+
+#side-left {
+    width: 14%;
+    min-height:1px;
+    float:left;
+    border-right: solid 1px;
+}
+
+#side-right {
+    width: 14%;
+    min-height:1px;
+    float:left;
+    border-left: solid 1px;
+}
+

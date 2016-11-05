@@ -6,6 +6,7 @@
         <script src="{{ url_for('static', filename='jquery-3.1.1.min.js') }}"></script>
         <script src="{{ url_for('static', filename='jquery.caret.min.js') }}"></script>
         <script src="{{ url_for('static', filename='jquery.tag-editor.min.js') }}"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='custom.css') }}">
         {% block head %}{% endblock %}
         <style>{% block style %}{% endblock %}</style>
     </head>
@@ -19,10 +20,13 @@
         </ul>
         {% endif %}
         {% endwith %}
-        <aside id="left-side"></aside>
+        <div id="body-container">
+        <aside id="side-left"></aside>
         <main id="main">
         {% block body %}{% endblock %}
         </main>
+        <aside id="side-right"></aside>
+        </div>
         <script type="text/javascript">{% block script %}{% endblock %}</script>
     </body>
 </html>
