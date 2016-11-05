@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block style %}
+.tag-item {
+    display: inline-block;
+    padding: 3px;
+    background-color: black;
+    color: white;
+}
+{% endblock %}
+{% block body %}
+<h1>{{ page.title }}</h1>
+<p>{{page.content }}</p>
+{#    <p><small>
+    {% for tag in page[1] %}    
+    <div class="tag-item">{{ tag }}</div> 
+    {% endfor %}
+    </small></p>
+</ul>
+#}
+{% endblock %}
