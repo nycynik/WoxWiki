@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block style %}
+.tag-item {
+    display: inline-block;
+    padding: 3px;
+    background-color: black;
+    color: white;
+}
+{% endblock %}
+{% block body %}
+<h1>Welcome to oxNote</h1>
+<ul>
+{% for page in pages %}
+<li>
+    <p><a href="">{{page[0]}}</a><p>
+    <p><small>
+    {% for tag in page[1] %}    
+    <div class="tag-item">{{ tag }}</div> 
+    {% endfor %}
+    </small></p>
+</li>
+{% endfor %}
+</ul>
+{% endblock %}

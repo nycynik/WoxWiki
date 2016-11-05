@@ -10,7 +10,8 @@ def index():
     """
     pages = Page.query.all()
     jt = lambda x: [k.name for k in x]
-    return jsonify([(x.title, jt(x.tags)) for x in pages])
+    page_list = [(x.title, jt(x.tags)) for x in pages]
+    return render_template('index.html', pages=page_list)
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
