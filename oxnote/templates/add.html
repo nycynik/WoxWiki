@@ -1,19 +1,29 @@
 {% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='jquery.tag-editor.css') }}">
+{% endblock %}
 {% block body %}
 <h1> Add a new page </h1>
 <form method="post">
-    <input name="title" type="text"><br>
+    <label for="title">Title: <input id="title" name="title" type="text"></label><br>
+    <label for="tagger">Tags: </label><input id="tagger" name="tagger">
     <div id="tag-list">
-    <input name="tags[]" ><br>
-    <input name="tags[]" ><br>
     </div>
-    <textarea name="content"></textarea><br>
+    <label for="Content">Content:<br><textarea rows=15 cols=90 name="content"></textarea></label>
+    <br>
     <input type="submit">
 </form>
 <script>
-    var tagDiv = document.getElementById('tag-list');
-    var onTagAdd = function() {
-        tagDiv.innerHTML += '<input name="tags[]">
-    }
+    $('#tagger').tagEditor();
+    $("form").submit( function(eventObj) {
+        var tags = $('#tagger').tagEditor('getTags')[0].tags;
+        $.each(tags, function(i, v){
+            $('<input />').attr('type', 'hidden')
+                .attr('name', "tags[]")
+                .attr('value', v)
+                .appendTo('#tag-list');
+        });
+        return true;
+    });
 </script>
 {% endblock %}
