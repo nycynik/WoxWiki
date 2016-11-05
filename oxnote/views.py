@@ -38,8 +38,21 @@ def add():
         db.session.add(page)
         db.session.commit()
         flash('Page sucessfully added', 'success')
-        return redirect(url_for('index'))
+        return redirect(url_for('page', pid=page.id))
 
     # Display the form
     return render_template('add.html')
 
+@app.route('/<int:pid>/', methods=['GET', 'POST'])
+def page(pid):
+    """
+    Retrieves a page
+    Edits a page
+    """
+    if request.method == 'POST':
+        # TODO write code for edit page
+        pass
+    
+    page = Page.query.get(pid)
+    # TODO: serialise and pass 'tags' aswell
+    return render_template('page.html', page={'id': page.id, 'title': page.title, 'content': page.content})
