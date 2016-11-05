@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='simplemde.min.css')}}">
+<script src="{{ url_for('static', filename='simplemde.min.js')}}"></script>
+{% endblock %}
 {% block style %}
 .tag-item {
     display: inline-block;
@@ -9,7 +13,7 @@
 {% endblock %}
 {% block body %}
 <h1>{{ page.title }}</h1>
-<p>{{page.content }}</p>
+<textarea id="content"></textarea>
 {#    <p><small>
     {% for tag in page[1] %}    
     <div class="tag-item">{{ tag }}</div> 
@@ -18,3 +22,8 @@
 </ul>
 #}
 {% endblock %}
+{% block script %}
+var editor = new SimpleMDE({ element: $("#content")[0] });
+editor.value({{ page.content | tojson}});
+{% endblock %}
+
