@@ -8,10 +8,10 @@ def index():
     """
     Lists all pages in the wiki
     """
-    pages = Page.query.all()
-    jt = lambda x: [k.name for k in x]
-    page_list = [(x.title, jt(x.tags)) for x in pages]
+    pages = Page.query.order_by(Page.title).all()
+    page_list = [page.seralized for page in pages]
     return render_template('index.html', pages=page_list)
+
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
@@ -43,6 +43,7 @@ def add():
     # Display the form
     return render_template('add.html')
 
+
 @app.route('/<int:pid>/', methods=['GET', 'POST'])
 def page(pid):
     """
@@ -54,5 +55,4 @@ def page(pid):
         pass
     
     page = Page.query.get(pid)
-    # TODO: serialise and pass 'tags' aswell
-    return render_template('page.html', page={'id': page.id, 'title': page.title, 'content': page.content})
+    return render_template('page.html', page=page.seralized)

@@ -14,14 +14,10 @@
 {% endblock %}
 {% block body %}
 <h1>{{ page.title }}</h1>
+<p><small>{% for tag in page.tags %}    
+<div class="tag-item">{{ tag.name }}</div> 
+{% endfor %}</small></p>
 <textarea id="content"></textarea>
-{#    <p><small>
-    {% for tag in page[1] %}    
-    <div class="tag-item">{{ tag }}</div> 
-    {% endfor %}
-    </small></p>
-</ul>
-#}
 {% endblock %}
 {% block script %}
 var editor = new SimpleMDE({ element: $("#content")[0] });
