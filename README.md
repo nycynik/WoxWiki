@@ -14,12 +14,28 @@ A note taking personal wiki solution to capture my life.
 
 ## Goals
 
-Importance scale: [lowest] 0, 1, 2 [highest]
+Importance scale: 0, 1, 2, .. inf .. 
 
-Item | Importance | Done?
------|------------|------
-Add, edit, remove pages | 2 | -
-Markdown Support | 1 | -
-Categories | 0 | -
-Tags | 2 | -
-Index page | 2 | -
+`0` being the most important feature.
+
+* Pages
+    - Add
+    - Move
+    - Edit
+    - Remove
+* Categories
+    - Multiple categories
+    - category page
+    - list of categories
+    - nested categories
+* Tags
+    - mutiple tags
+    - tag page
+    - list of tags
+* Something like a namespace
+    - Any page can *only* belong to one namespace
+    - used for highest level classification
+* File upload as a direct child (subpage)
+    - for easy linking in markdown
+* Improve UI
+
