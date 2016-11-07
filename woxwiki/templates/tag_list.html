@@ -1,12 +1,4 @@
 {% extends "base.html" %}
-{% block style %}
-.tag-item {
-    display: inline-block;
-    padding: 3px;
-    background-color: black;
-    color: white;
-}
-{% endblock %}
 {% block body %}
 <h1>List of all tags</h1>
 {% if tags %}
@@ -18,6 +10,6 @@
 {% endfor %}
 </ul>
 {% else %}
-<div class="info"><p>No tags found. Consider adding some tags to your pages.</p></div>
+<div class="alert info">No tags found. Consider adding some tags to your pages.</div>
 {% endif %}
 {% endblock %}

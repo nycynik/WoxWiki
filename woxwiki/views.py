@@ -66,6 +66,8 @@ def tag(tname):
         tag_list = [t.serialized for t in tags]
         return render_template('tag_list.html', tags=tag_list)
     tag = Tag.query.filter(Tag.name==tname).first()
+    if not tag:
+        return render_template('tag.html', tag={'name': tname})
     pages = tag.pages.all()
     page_list = [page.serialized for page in pages]
     return render_template('tag.html', tag=tag.serialized, pages=page_list)

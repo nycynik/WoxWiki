@@ -79,16 +79,54 @@ body {
     border-left: solid 1px;
 }
 
-/* Alert colors */
-.error {
-    background-color: red;
-    color: black;
+/* Tags */
+.tag-item {
+    font-size: 65%;
+    padding: 2px 5px;
+    background: #c5d3e2;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.tag-item a {
+    border: 0px;
+    text-decoration: none;
+}
+
+/* Alert */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
 }
 
 .info {
-    background-color: lightblue;
-    color: black;
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
 }
+
+.success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+
+.danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
 
 /* Helper classes */
 
