@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='simplemde.min.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='editor.css')}}">
+<script src="{{ url_for('static', filename='simplemde.min.js')}}"></script>
 <link rel="stylesheet" href="{{ url_for('static', filename='jquery.tag-editor.css') }}">
 {% endblock %}
 {% block body %}
@@ -9,7 +12,7 @@
     <label for="tagger">Tags: </label><input id="tagger" name="tagger">
     <div id="tag-list">
     </div>
-    <label for="Content">Content:<br><textarea rows=15 cols=90 name="content"></textarea></label>
+    <label for="Content">Content:<br><textarea name="content" id="content"></textarea></label>
     <br>
     <input type="submit">
 </form>
@@ -27,3 +30,7 @@
     });
 </script>
 {% endblock %}
+{% block script %}
+var editor = new SimpleMDE({ element: $("#content")[0] });
+{% endblock %}
+
