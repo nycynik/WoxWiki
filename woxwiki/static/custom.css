@@ -1,10 +1,64 @@
 body {
+    padding: 0;
     max-width: initial;
 }
 
 #body-container {
     overflow: hidden;
 }
+
+/* Headers and Footers */
+
+.fancy-font {
+    font-family: fancyRoman;
+}
+
+#site-header {
+    padding-top: 5px;
+    padding-bottom: 2px;
+    background-color: #444;
+    overflow: hidden;
+}
+
+#site-header * {
+    color: #ddd;
+}
+
+#site-header h1 {
+    font-size: 1.5em;
+    font-family: fancyRoman;
+    display: inline-block;
+    margin: 0;
+    position: absolute;
+    bottom: -5px;
+}
+
+#site-header nav ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+#site-header nav ul li {
+    margin: 10px;
+    display: inline-block;
+}
+
+#site-footer {
+    margin-top: 25px;
+}
+
+#site-footer ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#site-footer ul li {
+    display: inline-block;
+}
+
+/* Main content and sidebars */
 
 #main {
     float:left;
@@ -25,3 +79,20 @@ body {
     border-left: solid 1px;
 }
 
+/* Helper classes */
+
+.no-border {
+    border: 0;
+}
+
+.no-border:hover {
+    border: 0;
+}
+
+.pl {
+    float: left;
+}
+
+.pr {
+    float: right;
+}

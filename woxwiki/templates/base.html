@@ -13,6 +13,16 @@
         <style>{% block style %}{% endblock %}</style>
     </head>
     <body>
+        <header id="site-header">
+            <nav id="site-nav">
+                <ul>
+                    <li><strong><a href="/" class="sakura-blossom no-border fancy-font pl" id="site-name">WoxWiki</a></strong></li>
+                    <li><a class="fancy-font sakura-fade no-border pl" href="/category">Categories</a></li>
+                    <li><a class="fancy-font sakura-fade no-border pl" href="/tag">Tags</a></li>
+                    <li class="pr"><a class="fancy-font sakura-fade no-border" href="/add">AddPage</a></li>
+                </ul>
+            </nav>
+        </header>
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
         <ul class=flashes>
