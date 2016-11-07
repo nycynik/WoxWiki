@@ -1,4 +1,4 @@
-# oxNote
+# WoxWiki
 
 A note taking personal wiki solution to capture my life.
 

@@ -12,4 +12,4 @@ db = SQLAlchemy(app)
 # basic_auth = BasicAuth(app)
 
 # Imports views from __init__.py in respective packages
-from oxnote import views
+from woxwiki import views

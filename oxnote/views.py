@@ -1,6 +1,6 @@
 from flask import jsonify
-from oxnote import app, db
-from oxnote.models import Page, Tag
+from woxwiki import app, db
+from woxwiki.models import Page, Tag
 from flask import redirect, url_for, flash, request, render_template
 
 @app.route('/')
