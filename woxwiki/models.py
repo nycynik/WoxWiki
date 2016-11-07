@@ -14,7 +14,7 @@ class Page(db.Model):
         backref=db.backref('pages', lazy='dynamic'))
 
     @property
-    def seralized(self):
+    def serialized(self):
         return {
             'id': self.id,
             'title': self.title,
@@ -24,7 +24,7 @@ class Page(db.Model):
 
     @property
     def _serialize_tags(self):
-        tag_list = [tag.seralized for tag in self.tags]
+        tag_list = [tag.serialized for tag in self.tags]
         tag_list.sort(key=lambda x: x['name'])
         return tag_list
 
@@ -34,7 +34,7 @@ class Tag(db.Model):
     name = db.Column(db.Text, unique=True)
 
     @property
-    def seralized(self):
+    def serialized(self):
         return {
             'id': self.id,
             'name': self.name

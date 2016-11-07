@@ -55,4 +55,4 @@ def page(pid):
         pass
     
     page = Page.query.get(pid)
-    return render_template('page.html', page=page.seralized)
+    return render_template('page.html', page=page.serialized)
