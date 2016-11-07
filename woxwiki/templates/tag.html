@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block style %}
+.tag-item {
+    display: inline-block;
+    padding: 3px;
+    background-color: black;
+    color: white;
+}
+{% endblock %}
+{% block body %}
+<h1>Pages tagged with <strong>{{ tag.name }}</strong></h1>
+{% if pages %}
+<ul>
+{% for page in pages %}
+<li>
+    <p><a href="{{ url_for('page', pid=page.id) }}">{{page.title}}</a><p>
+    {% if page.tags %}
+    <p>
+    {% for tag in page.tags %}    
+    <div class="tag-item">{{ tag.name }}</div> 
+    {% endfor %}
+    </p>
+    {% endif %}
+</li>
+{% endfor %}
+</ul>
+{% else %}
+<div class="info"><p>No pages found. Consider adding this tag to some of your pages.</p></div>
+{% endif %}
+{% endblock %}

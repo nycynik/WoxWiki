@@ -9,7 +9,7 @@ def index():
     Lists all pages in the wiki
     """
     pages = Page.query.order_by(Page.title).all()
-    page_list = [page.seralized for page in pages]
+    page_list = [page.serialized for page in pages]
     return render_template('index.html', pages=page_list)
 
 
@@ -56,3 +56,17 @@ def page(pid):
     
     page = Page.query.get(pid)
     return render_template('page.html', page=page.serialized)
+
+
+@app.route('/tag/', defaults={'tname': ''}, methods=['GET'])
+@app.route('/tag/<string:tname>/', methods=['GET'])
+def tag(tname):
+    if tname.strip() is '':
+        tags = Tag.query.order_by(Tag.name).all()
+        tag_list = [t.serialized for t in tags]
+        return render_template('tag_list.html', tags=tag_list)
+    tag = Tag.query.filter(Tag.name==tname).first()
+    pages = tag.pages.all()
+    page_list = [page.serialized for page in pages]
+    return render_template('tag.html', tag=tag.serialized, pages=page_list)
+

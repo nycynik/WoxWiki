@@ -79,6 +79,17 @@ body {
     border-left: solid 1px;
 }
 
+/* Alert colors */
+.error {
+    background-color: red;
+    color: black;
+}
+
+.info {
+    background-color: lightblue;
+    color: black;
+}
+
 /* Helper classes */
 
 .no-border {

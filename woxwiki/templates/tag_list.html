@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block style %}
+.tag-item {
+    display: inline-block;
+    padding: 3px;
+    background-color: black;
+    color: white;
+}
+{% endblock %}
+{% block body %}
+<h1>List of all tags</h1>
+{% if tags %}
+<ul>
+{% for tag in tags %}
+<li>
+    <p><a href="{{ url_for('tag', tname=tag.name)}}">{{tag.name}}</a><p>
+</li>
+{% endfor %}
+</ul>
+{% else %}
+<div class="info"><p>No tags found. Consider adding some tags to your pages.</p></div>
+{% endif %}
+{% endblock %}
