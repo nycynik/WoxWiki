@@ -8,17 +8,17 @@
 }
 {% endblock %}
 {% block body %}
-<h1>Welcome to oxNote</h1>
+<h1>Welcome to WoxWiki</h1>
 <ul>
 {% for page in pages %}
 <li>
     <p><a href="{{ url_for('page', pid=page.id) }}">{{page.title}}</a><p>
     {% if page.tags %}
-    <p><small>
+    <p>
     {% for tag in page.tags %}    
     <div class="tag-item">{{ tag.name }}</div> 
     {% endfor %}
-    </small></p>
+    </p>
     {% endif %}
 </li>
 {% endfor %}

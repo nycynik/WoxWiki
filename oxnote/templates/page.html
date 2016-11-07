@@ -14,9 +14,11 @@
 {% endblock %}
 {% block body %}
 <h1>{{ page.title }}</h1>
-<p><small>{% for tag in page.tags %}    
-<div class="tag-item">{{ tag.name }}</div> 
-{% endfor %}</small></p>
+<p>
+    {% for tag in page.tags %}    
+    <div class="tag-item">{{ tag.name }}</div> 
+    {% endfor %}
+</p>
 <textarea id="content"></textarea>
 {% endblock %}
 {% block script %}
