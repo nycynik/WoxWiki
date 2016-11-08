@@ -14,6 +14,12 @@ structured format (and XML sucks). So, all data is stored as
 *markdown* inside a sqlite file (which will allow for easy
 exporting).
 
+Everything resides as a page. There are no namespaces or portals
+like other traditional wikis (mediawiki), because organising
+content is hard. It's pure cognitive load which we shouldn't
+have to think about. Multiple categories, and multiple tags will
+solve this organizing issue for us.
+
 ## Features
 
 * [X] Easy to use
@@ -22,7 +28,6 @@ exporting).
     - Heirarchial category structure
 * [ ] Page Linking
 * [ ] Content searching
-* [ ] Namespaces
 * [ ] Journaling/Diary/Blogging
 * [ ] Export markdown files
 * [ ] Import markdown files 
