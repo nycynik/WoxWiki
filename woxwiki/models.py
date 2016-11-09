@@ -1,7 +1,13 @@
 from woxwiki import db
 
-tags = db.Table('tags',
+page_tags = db.Table('page_tags',
     db.Column('tag_id', db.Integer, db.ForeignKey('tag.id')),
+    db.Column('page_id', db.Integer, db.ForeignKey('page.id'))
+)
+
+
+page_categories = db.Table('page_categories',
+    db.Column('category_id', db.Integer, db.ForeignKey('category.id')),
     db.Column('page_id', db.Integer, db.ForeignKey('page.id'))
 )
 
@@ -10,7 +16,11 @@ class Page(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text, unique=True) # ADD: lowercase/slug checking
     content = db.Column(db.Text)
-    tags = db.relationship('Tag', secondary=tags,
+    date_created = db.Column(db.DateTime)
+    date_modified = db.Column(db.DateTime)
+    tags = db.relationship('Tag', secondary=page_tags,
+        backref=db.backref('pages', lazy='dynamic'))
+    categories = db.relationship('Category', secondary=page_categories,
         backref=db.backref('pages', lazy='dynamic'))
 
     @property
@@ -19,7 +29,10 @@ class Page(db.Model):
             'id': self.id,
             'title': self.title,
             'content': self.content,
-            'tags': self._serialize_tags
+            'date_created': self.date_created,
+            'date_modified': self.date_modified,
+            'tags': self._serialize_tags,
+            'categories': self._serialize_categories,
         }
 
     @property
@@ -28,8 +41,26 @@ class Page(db.Model):
         tag_list.sort(key=lambda x: x['name'])
         return tag_list
 
+    @property
+    def _serialize_categories(self):
+        category_list = [category.serialized for category in self.categories]
+        category_list.sort(key=lambda x: x['name'])
+        return category_list
+
 
 class Tag(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text, unique=True)
+
+    @property
+    def serialized(self):
+        return {
+            'id': self.id,
+            'name': self.name
+        }
+
+
+class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text, unique=True)
 
