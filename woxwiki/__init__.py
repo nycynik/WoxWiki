@@ -13,3 +13,4 @@ db = SQLAlchemy(app)
 
 # Imports views from __init__.py in respective packages
 from woxwiki import views
+from woxwiki import cli

@@ -1,4 +1,9 @@
-.PHONY = init migrate upgrade debug
+.PHONY = init migrate upgrade debug createdb
+export FLASK_APP=woxwiki/__init__.py
+export FLASK_DEBUG=1;
+
+createdb:
+	flask createdb
 
 debug:
 	python3 run.py
