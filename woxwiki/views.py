@@ -1,6 +1,6 @@
 from flask import jsonify
 from woxwiki import app, db
-from woxwiki.models import Page, Tag
+from woxwiki.models import Page, Tag, Category
 from flask import redirect, url_for, flash, request, render_template
 
 @app.route('/')
@@ -22,7 +22,9 @@ def add():
         title = request.form['title']
         content = request.form['content']
         tag_list = request.form.getlist('tags[]')
+        category_list = request.form.getlist('categories[]')
         existing_tags = Tag.query.all()
+        existing_categories = Category.query.all()
 
         page = Page(title=title, content=content)
         db.session.flush([page])
@@ -34,6 +36,15 @@ def add():
                 t = Tag(name=tag)
                 db.session.add(t)
                 page.tags.append(t)
+
+        for category in category_list:
+            for c in existing_categories:
+                if category == c.name:
+                    page.categories.append(c)
+            else:
+                c = Category(name=category)
+                db.session.add(c)
+                page.categories.append(c)
 
         db.session.add(page)
         db.session.commit()
@@ -61,6 +72,10 @@ def page(pid):
 @app.route('/tag/', defaults={'tname': ''}, methods=['GET'])
 @app.route('/tag/<string:tname>/', methods=['GET'])
 def tag(tname):
+    """
+    /tag => return a list of all tags
+    /tag/<tag name> => return all pages containing the tag
+    """
     if tname.strip() is '':
         tags = Tag.query.order_by(Tag.name).all()
         tag_list = [t.serialized for t in tags]
@@ -72,3 +87,21 @@ def tag(tname):
     page_list = [page.serialized for page in pages]
     return render_template('tag.html', tag=tag.serialized, pages=page_list)
 
+
+@app.route('/category/', defaults={'tname': ''}, methods=['GET'])
+@app.route('/category/<string:tname>/', methods=['GET'])
+def category(tname):
+    """
+    /category => return a list of all categorys
+    /category/<category name> => return all pages containing the category
+    """
+    if tname.strip() is '':
+        cats = Category.query.order_by(Category.name).all()
+        cat_list = [t.serialized for t in cats]
+        return render_template('category_list.html', categories=cat_list)
+    category = Category.query.filter(Category.name==tname).first()
+    if not category:
+        return render_template('category.html', category={'name': tname})
+    pages = Category.pages.all()
+    page_list = [page.serialized for page in pages]
+    return render_template('category.html', category=category.serialized, pages=page_list)
