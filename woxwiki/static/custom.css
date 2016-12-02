@@ -1,133 +1,15 @@
-body {
-    padding: 0;
-    max-width: initial;
-}
-
-#body-container {
-    overflow: hidden;
-}
-
-/* Headers and Footers */
-
-.fancy-font {
-    font-family: fancyRoman;
-}
-
-#site-header {
-    padding-top: 5px;
-    padding-bottom: 2px;
-    background-color: #444;
-    overflow: hidden;
-}
-
-#site-header * {
-    color: #ddd;
-}
-
-#site-header h1 {
-    font-size: 1.5em;
-    font-family: fancyRoman;
-    display: inline-block;
-    margin: 0;
-    position: absolute;
-    bottom: -5px;
-}
-
-#site-header nav ul {
-    margin: 0px;
-    padding: 0px;
-    list-style-type: none;
-}
-
-#site-header nav ul li {
-    margin: 10px;
-    display: inline-block;
-}
-
-#site-footer {
-    margin-top: 25px;
-}
-
-#site-footer ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-#site-footer ul li {
-    display: inline-block;
-}
-
-/* Main content and sidebars */
-
-#main {
-    float:left;
-    /* width: 70%; */
-    width: 84%;
-}
-
-#side-left {
-    width: 14%;
-    min-height:1px;
-    float:left;
-    border-right: solid 1px;
-}
-
-/*     width: 14%; */
-/*     min-height:1px; */
-/*     float:left; */
-/*     border-left: solid 1px; */
-/* } */
-
 /* Tags */
 .tag-item {
-    font-size: 65%;
-    padding: 2px 5px;
-    background: #c5d3e2;
     white-space: nowrap;
     cursor: pointer;
     display: inline-block;
-    border-radius: 5px;
 }
 
 .tag-item a {
     border: 0px;
+    color: #333;
     text-decoration: none;
 }
-
-/* Alert */
-.alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-}
-
-.info {
-    color: #31708f;
-    background-color: #d9edf7;
-    border-color: #bce8f1;
-}
-
-.success {
-    color: #3c763d;
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-}
-
-.warning {
-    color: #8a6d3b;
-    background-color: #fcf8e3;
-    border-color: #faebcc;
-}
-
-.danger {
-    color: #a94442;
-    background-color: #f2dede;
-    border-color: #ebccd1;
-}
-
-
 /* Helper classes */
 
 .no-border {
@@ -145,3 +27,8 @@ body {
 .pr {
     float: right;
 }
+
+.full-width {
+    max-width: 100%;
+}
+
