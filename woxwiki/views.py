@@ -102,6 +102,6 @@ def category(tname):
     category = Category.query.filter(Category.name==tname).first()
     if not category:
         return render_template('category.html', category={'name': tname})
-    pages = Category.pages.all()
+    pages = category.pages.all()
     page_list = [page.serialized for page in pages]
     return render_template('category.html', category=category.serialized, pages=page_list)
