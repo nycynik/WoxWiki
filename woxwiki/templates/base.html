@@ -4,41 +4,23 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <title>WoxWiki</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='normalize.css') }}">
-        <script src="{{ url_for('static', filename='jquery-3.1.1.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='jquery.caret.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='jquery.tag-editor.min.js') }}"></script>
-        <link rel="stylesheet" href="{{ url_for('static', filename='sakura-light.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme-journal.min.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='custom.css') }}">
         {% block head %}{% endblock %}
         <style>{% block style %}{% endblock %}</style>
     </head>
     <body>
-        <header id="site-header">
-            <nav id="site-nav">
-                <ul>
-                    <li><strong><a href="/" class="sakura-blossom no-border fancy-font pl" id="site-name">WoxWiki</a></strong></li>
-                    <li><a class="fancy-font sakura-fade no-border pl" href="/category">Categories</a></li>
-                    <li><a class="fancy-font sakura-fade no-border pl" href="/tag">Tags</a></li>
-                    <li class="pr"><a class="fancy-font sakura-fade no-border" href="/add">AddPage</a></li>
-                </ul>
-            </nav>
-        </header>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-        <ul class=flashes>
-            {% for category, message in messages %}
-            <li class="{{ category }}">{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {% endwith %}
-        <div id="body-container">
-        <aside id="side-left"></aside>
+        {% include "navbar.html" %}
+        <div class="container">
+        {% include "flash_msg.html" %}
         <main id="main">
         {% block body %}{% endblock %}
         </main>
-        <aside id="side-right"></aside>
         </div>
+        <script src="{{ url_for('static', filename='jquery-3.1.1.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='jquery.caret.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='jquery.tag-editor.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
         <script type="text/javascript">{% block script %}{% endblock %}</script>
     </body>
 </html>

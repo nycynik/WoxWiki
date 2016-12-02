@@ -1,19 +1,4 @@
 {% extends "base.html" %}
-{% block style %}
-.tag-item {
-    font-size: 65%;
-    padding: 2px 5px;
-    background: #c5d3e2;
-    white-space: nowrap;
-    cursor: pointer;
-    display: inline-block;
-    border-radius: 5px;
-}
-.tag-item a {
-    border: 0px;
-    text-decoration: none;
-}
-{% endblock %}
 {% block body %}
 <h1>Welcome to WoxWiki</h1>
 <ul>
@@ -22,7 +7,7 @@
     <a href="{{ url_for('page', pid=page.id) }}">{{page.title}}</a>
     {% if page.tags %}
     {% for tag in page.tags %}    
-    <div class="tag-item"><a href="{{ url_for('tag', tname=tag.name)}}">{{ tag.name }}</a></div> 
+    <div class="tag-item"><span class="label label-default"><a href="{{ url_for('tag', tname=tag.name)}}">{{ tag.name }}</a></span></div>
     {% endfor %}
     {% endif %}
 </li>
