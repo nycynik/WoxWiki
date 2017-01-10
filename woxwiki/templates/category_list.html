@@ -2,14 +2,27 @@
 {% block body %}
 <h1>List of all categories</h1>
 {% if categories %}
-<ul>
+<div class="table-responsive">
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Parent</th>
+            <th>Children</th>
+        </tr>
+    </thead>
+    <tbody>
 {% for category in categories %}
-<li>
-    <p><a href="{{ url_for('category', tname=category.name)}}">{{category.name}}</a><p>
-</li>
+    <tr>
+        <td><a href="{{ url_for('category', tname=category.name)}}">{{category.name}}</a></td>
+        <td> category.parent </td>
+        <td>children1, 2, 3</td>
+    </tr>
 {% endfor %}
-</ul>
+    </tbody>
+</table>
+</div>
 {% else %}
-<div class="alert info">No categories found. Consider adding some categories to your pages.</div>
+<div class="alert alert-info">No categories found. Consider adding some categories to your pages.</div>
 {% endif %}
 {% endblock %}

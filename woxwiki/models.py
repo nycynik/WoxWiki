@@ -63,10 +63,17 @@ class Tag(db.Model):
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text, unique=True)
+    parent_id = db.Column(db.Integer, db.ForeignKey('category.id'))
+    children = db.relationship('Category', backref=db.backref('parent', remote_side=[id]))
 
     @property
     def serialized(self):
         return {
             'id': self.id,
-            'name': self.name
+            'name': self.name,
+            'parent': self._serialize_parent
         }
+
+    @property
+    def _serialize_parent(self):
+        return self.parent.serialized
